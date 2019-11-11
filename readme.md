@@ -70,8 +70,8 @@ echo $PATH
   ```
   cd /home
   ```
-  Supondo que estivessemos no diretório raiz do windows, neste momento teriamos avançado para a pasta/diretório home. Caso você não entenda o que é o diretório raiz, vou colocar aqui uma imagem que demonstra a estrutura básica dos diretórios no Linux que eu retirei do site [linux training academy](https://www.linuxtrainingacademy.com/linux-directory-structure-and-file-system-hierarchy/).
-  ![Estrutura de diretórios](/imagens/linux-directory-tree.jpg)
+  Supondo que estivessemos no diretório raiz do windows, neste momento teriamos avançado para a pasta/diretório home. Caso você não entenda o que é o diretório raiz, vou colocar aqui uma imagem que demonstra a estrutura básica dos diretórios no Linux que eu retirei do site [linux training academy](https://www.linuxtrainingacademy.com/wp-content/uploads/2014/03/linux-directory-tree.jpg).
+  ![Estrutura de diretórios](https://www.linuxtrainingacademy.com/book/)
   
   Como podemos notar, o diretório home está dentro do diretório '/', que é o diretório que chamamos de raiz, e dentro do diretório home temos *jason* e *pat*, que representam os diretórios dos usuários existentes no computador. Mas voltemos ao comando *cd* nós nos movemos da pasta '/' para a pasta */home*, podemos dizer que nós descemos um nível na nossa arvoré de diretórios, casso quissemos subir um nível e voltar para a pasta '/' podemos utilizar:
   
@@ -121,5 +121,58 @@ cd Documents
   * ls -lh: exibe o mesmo conteúdo de ls -l, porém com a coluna de tamanho em bytes se ajustando para exibir em KiloBytes, MegaBytes e etc, quando necessário
   * ls -r: acessa de forma recursiva o conteúdo do diretório, mostando o contéudo dos diretórios filhos também.
   * podemos usar o ls combinando vários dessas opções, por exemplo, ls -lhar, vai exibir todos os conteúdos, inclusive os ocultos, em formato de lista, com o tamanho dos arquivos sendo adapatados quando necessário e de todos os diretórios subsequentes ao que se encontra.
+  * A opção -t faz com que a lista seja ordenada pela data de modificação, da mais antiga para a mais recente, pode ser misturada com outros comando, por exemplo ls -ltr
+  * Por fim, podemos passar também um diretório para o comando ls, por exemplo, ls -ltr /home, iremos exbir o conteúdo da pasta home mesmo não estando localizado neste diretório.
+  Com isso podemos navegar pelo terminal do linux e facilitar o andamento do curso a seguir, então vamos lá!
   
+  #### Comandos sequênciais
+    
+  Existem formas de executar comando de forma sequêncial no Linux, de forma a executarmos vários comandos em uma única linha de código, para isso nós usamos os caracteres ; (ponto e vírgula), || (pipe pipe) ou && (E comercial, e comercial). Qual a diferença de cada um deles, com o uso do ; os comandos são executados sem se importar com a sáida do comando anterior
+    
+```
+cd /home/usuario/Desktop; ls -ltr
+```
+
+  Já ao usarmos || ou && significa que vamos impor condições para execurtarmos os comandos seguintes, de que forma? Quando usamos || nós só irememos executar o segundo comando, caso o primeiro retorne erro. E com && comerciais, será justamente o contrário, só executara caso o primeiro comando tenha sucesso.
+
+``` 
+cd /Diretorio_Inexistente || echo "Diretório não encontrado"
+cd /home && ls -ltrh  
+```
   
+  O primeiro comando é um exemplo de que como utilizar ||, tente executar e note que o terminal irá retornar um erro de que não encontrou um arquio ou diretório com o nome e depois exibiu a mensagem que escremos com o comando *echo*, caso queira trocar por || por && neste exemplo, irá ver que o retorno será somente a mensagem de erro do linux. Já no segundo exemplo, temos uma forma de utlizar && para realizar comandos sequênciais, ao usar, verá que foi redirecionado ao diretório */home* e então foi listado seu conteúdo. Desta forma conseguimos executar muitos comundos de forma mais ágil, ao invés de executarmos um, esperar o retorno, executarmos outro.
+  
+### Buscando Ajuda
+
+  O próprio S.O. tem documentação sobre os comandos, e nesta seçao vamos apresentar algumas formas de como utilizar essa documentação para entender os comandos. Entre os comandos que aprenderemos temos o *man, o *whatis*, *apropos* e a opção *--help*.
+  
+##### O Comando *man*
+
+  É um comando para exibir um manual acerta do comando que deseja, usamos ele *man* e o comando que queremos ver o manual:
+  
+```
+man ls
+```
+  Mas agora temos um manual dizendo o que o comando faz e opções que podemos acrescentar ao comando. Para navegar nas informações que apareceram, utilize *page down* para descer uma página, *page up* para subir uma página e as setas do teclado, para sair da visualização, pressione *q*. Outra forma de utilizar o man é com a opção *-k*, onde passamos uma *string* de busca e ele nos retornará uma lista de comandos que estejam relacionados à *string* de busca, dessa forma:
+  
+ ```
+man -k system
+```
+
+  Outra forma de executar a mesma coisa é trocar *man -k* por *apropos"
+  
+#### O Comando whatis
+  
+  Funciona de forma semelhante ao comando *man -k*, porém, aqui ao invés de pesquisarmos por algo e econtrar um comando, nós pesquisamos o comando e ele nos retorna uma breve descrição, exemplo:
+
+```
+whatis ls
+```
+#### A Opção --help
+  
+  Todo comando possui está opção, ela é como uma versão simplificada do *man* e exibe uma documentação resumida e foca nas opções que podemos acrescentar o comando, seguido de uma descrição, muito recomandado para quando queremos sanar uma pequena dúvida e de forma rápida de um comando, sua sintaxe é "comando -- help", exemplo:
+  
+```
+ls --help
+cd --help
+```
