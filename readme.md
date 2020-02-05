@@ -63,7 +63,7 @@ echo $PATH
 
   Nesta seção iremos discutir e exemplificar os principais comandos linux pra conseguirmos navegar e avançar nos nossos estudos. Vamos começar com os dois comandos mais importantes de navegação no linux, os comandos *cd* e *ls*.
   
- #### Comando cd
+ #### Comando *cd*
   
   O comando *cd* é o comando que possibilida a navegação entre diretórios no windows. Sua sintaxe é extremamente simples, usamos o comando seguido de um diretório que desejamos ir, da seguinte maneiroa:
   
@@ -104,7 +104,7 @@ cd Documents
   * ~ para navegar diretamente até o diretório *home* do usuário atual.
   * - para voltar ao último diretório em que esteve (esse fica pra você testar e atiçar a curiosidade).
   
-#### Comando ls
+#### Comando *ls*
 
   Este é o comando de listagem de conteúdo, utilizamos ele para podermos ver os arquivos dentro de uma pasta (neste momento traremos tudo como arquivos, os diretórios/pastas serão arquivos do tipo diretório/pasta). Sua sintaxe também é bem simples, basta digitar *ls* no terminal que ele trará os resultados. Porém existem formas de refinar sua busca, ou exibir mais conteúdo sobre os arquivos encontrados, para isso vamos acrescentar alguns caracteres (chamaremos de opções) na frente do nosso comando, por exemplo:
   * ls -a: Exibe também os arquivos ocultos na saída (aqui, arquivos ocultos são os arquivos que tem sou nome iniciando com '.' (ponto), via de regra o comando ls não os exibe, com está opção, eles passam a ser visiveis).
@@ -161,14 +161,14 @@ man -k system
 
   Outra forma de executar a mesma coisa é trocar *man -k* por *apropos"
   
-#### O Comando whatis
+#### O Comando *whatis*
   
   Funciona de forma semelhante ao comando *man -k*, porém, aqui ao invés de pesquisarmos por algo e econtrar um comando, nós pesquisamos o comando e ele nos retorna uma breve descrição, exemplo:
 
 ```
 whatis ls
 ```
-#### A Opção --help
+#### A Opção *--help*
   
   Todo comando possui está opção, ela é como uma versão simplificada do *man* e exibe uma documentação resumida e foca nas opções que podemos acrescentar o comando, seguido de uma descrição, muito recomandado para quando queremos sanar uma pequena dúvida e de forma rápida de um comando, sua sintaxe é "comando -- help", exemplo:
   
@@ -176,3 +176,32 @@ whatis ls
 ls --help
 cd --help
 ```
+
+#### O Comando *alias*
+  Usamos para criar atalhos e vamos encontrar muitas vezes comandos que já estão disponíveis com um *alias*, inclusive o próprio *ls* vem algumas vezes como um alias de uma opção mais avançada do *ls*. Mas é um comando bem útil, já que assim consiguimos "encurtar" comandos muito longo. Comumente ao digitarmos somente '*alias*' no *shell*. Mas vamos ao como criar:
+  
+ ```
+ alias NomeAtalho='comando a ser executado'
+ ```
+  Mas vale lembrar que isso irá criar um atalho temporário, caso feche o *shell* irá perder o atalho, para tornar definitivo, terá que adicionar em um arquivo, o *.bashrc*. Para isso acesso o diretório */home*, e digite: 
+
+```
+vi .bashrc
+```
+  Aqui você ira inserir o comando do *alias* e depois de salvar o arquivo digite no *shell*:
+  
+```
+source .bashrc
+```
+  Agora todos os seus atalhos estarão salvos permanentemente, ou até que você os altere ou exclua.
+  
+ #### O comando *which*
+  É o comando que localiza o arquivo de execução dos programas externos que estão instalados no nosso sistema. A busca é feita a partir do diretório raiz. Vamos ao exemplo:
+  
+ ```
+ which echo
+```
+  O retorno será */bin/echo* 
+  
+#### *Quoting*
+  Aqui defineremos como o uso de certos caracteres para de certa forma proteger outros caracteres. Alguns caracteres reprensentam funções dentro de *shell*, como \* (asterisco), $ (cifrão), \` (crase) e \ (barra inversa). Os caracteres que vamos ver para realizar essa proteção são as " (aspas duplas), ' (aspas simples ou apóstrofo) e a \(barra inversa). Vamos a algumas diferenças entre cada um desses caracteres. A ' (aspas simples) protege todos os caracteres, sem exceção. As " (aspas duplas) protegem quase todos os caracteres, exceto o $, \` (crase) e \ (barra inversa). Já \ (barra inversa) protege somente o próximo caractere, ou seja o da direita. Vamos a alguns exemplos: `echo *` isso somente irá retornar todos o conteúdo do diretório, semelhante ao comando `ls`. Mas caso usemos as aspas duplas por exemplo: `echo "*"`, será impresso somente o asterisco na tela.  
