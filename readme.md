@@ -204,4 +204,21 @@ source .bashrc
   O retorno será */bin/echo* 
   
 #### *Quoting*
-  Aqui defineremos como o uso de certos caracteres para de certa forma proteger outros caracteres. Alguns caracteres reprensentam funções dentro de *shell*, como \* (asterisco), $ (cifrão), \` (crase) e \ (barra inversa). Os caracteres que vamos ver para realizar essa proteção são as " (aspas duplas), ' (aspas simples ou apóstrofo) e a \(barra inversa). Vamos a algumas diferenças entre cada um desses caracteres. A ' (aspas simples) protege todos os caracteres, sem exceção. As " (aspas duplas) protegem quase todos os caracteres, exceto o $, \` (crase) e \ (barra inversa). Já \ (barra inversa) protege somente o próximo caractere, ou seja o da direita. Vamos a alguns exemplos: `echo *` isso somente irá retornar todos o conteúdo do diretório, semelhante ao comando `ls`. Mas caso usemos as aspas duplas por exemplo: `echo "*"`, será impresso somente o asterisco na tela.  
+  Alguns caracteres reprensentam funções dentro de *shell*, como \* (asterisco), $ (cifrão), \` (crase) e \ (barra inversa). Porém existirão momentos em que desejaremos que esses caracteres sejam impressos sem realizar nenhum tipo de ação. Para evitar que as funcionalidades sejam executadas, utilizamos alguns caracteres para proteger os descritos acima. Os caracteres que vamos ver para realizar essa proteção são as " (aspas duplas), ' (aspas simples ou apóstrofo) e a \(barra inversa). Vamos a algumas diferenças entre cada um desses caracteres.
+  A ' (aspas simples) protege todos os caracteres, sem exceção. As " (aspas duplas) protegem quase todos os caracteres, exceto o $, \` (crase) e \ (barra inversa). Já \ (barra inversa) protege somente o próximo caractere, ou seja o da direita. Vamos a alguns exemplos: `echo *` isso somente irá retornar todos o conteúdo do diretório, semelhante ao comando `ls`. Mas caso usemos as aspas duplas por exemplo: `echo "*"`, será impresso somente o asterisco na tela.
+  
+### Arquivos de texto e *Streaming* de texto
+    
+#### Comando *CAT*
+  O comando *cat* é o mais útilizado quando queremos simplesmente imprimir a informçaõ no nosso *shell* ou em outra saída (veremos isso mais a frente). Sua sintaxe bem simples, basta digitar o comando seguido do arquivo que deseja ler: `cat Arquivo.txt`. Agora temos algumas opções que podemos adicionar para melhorar a visualização do texto, para utiliza-las é bem simples, basta adicona-las logo após o *cat*:
+    1. *-n* Irá númerar as linhas do arquivo (onde o *kernel* encontrar uma quebra de linha).`cat -n Arquivo.txt`.
+    2. *-b* Enumera somente as linhas que não estejam em branco. `cat -b Arquivo.txt`.
+    3. *-s* Agrupa todas a linhas brancas subsequentes em uma única linha. Caso o arquivo tenha três linhas brancas em           sequência, será exibida somente uma. `cat -s Arquivo.txt`.
+    4. *-A* Exibe todos os caracteres, mesmo os caracteres expeciais.
+  O comando tem mais algumas opções, mas estas são as mais comuns a serem usadas, recomendo que acesse o manual a partir do comando *man* ou com a ajuda da opçao *--help*. Mas a título de curiosidade temos o comando **_TAC_**, que é *cat* ao contrário e assim como o nome, a exibição do texto também é ao contrário, mais expecificamente invertendo a ordem das linhas, comenando pela ũltima e terminando na primera.
+  
+#### Comando *HEAD*
+  Algumas vezes quando estivermos procurando por algum conteúdo em uma lista de arquivos,não será interessante ler todo o arquivo, principalmente se forem arquivos grandes, seria interessante ler uma parte do arquivo e assim identificar se é condizente com o conteúdo que procura. Pra resolver este problema temos o comando *head*, sua funcão é exibir por padrão as dez primeiras linhas. Temos algumas opções que alteram a quantidade de linhas a serem exibidas, mas a sintaxe padrão é: `head Arquivo.txt`. E dentro das opções nós temos:
+    1. *-n* Usamos quando queremos mudar a quantidade de linhas a serem exibidas, o *-n* vai ser acompanhado do números de linha que deseja que sejam exibidas, sem espaços: `head -n3 Arquivo.txt`, irá exibir as três primeiras linhas do arquivo.
+    2. *-c* É usado para delimitar não a quantidade de primeiras linhas a serem exibidas, mas a quantidade de primeiros *bytes* a serem exibidos, a forma de se usar é a mesma da opção *-n*: `head -c50 Arquivo.txt`. Vai exibir os 50 primeiros bytes, ou seja, os 50 primeriros caracteres do arquivo.
+    
