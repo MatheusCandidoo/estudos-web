@@ -211,19 +211,30 @@ source .bashrc
     
 #### Comando *CAT*
   O comando *cat* é o mais útilizado quando queremos simplesmente imprimir a informçaõ no nosso *shell* ou em outra saída (veremos isso mais a frente). Sua sintaxe bem simples, basta digitar o comando seguido do arquivo que deseja ler: `cat Arquivo.txt`. Agora temos algumas opções que podemos adicionar para melhorar a visualização do texto, para utiliza-las é bem simples, basta adicona-las logo após o *cat*:
-    1. *-n* Irá númerar as linhas do arquivo (onde o *kernel* encontrar uma quebra de linha).`cat -n Arquivo.txt`.
-    2. *-b* Enumera somente as linhas que não estejam em branco. `cat -b Arquivo.txt`.
-    3. *-s* Agrupa todas a linhas brancas subsequentes em uma única linha. Caso o arquivo tenha três linhas brancas em           sequência, será exibida somente uma. `cat -s Arquivo.txt`.
-    4. *-A* Exibe todos os caracteres, mesmo os caracteres expeciais.
+    *. *-n* Irá númerar as linhas do arquivo (onde o *kernel* encontrar uma quebra de linha).`cat -n Arquivo.txt`.
+    *. *-b* Enumera somente as linhas que não estejam em branco. `cat -b Arquivo.txt`.
+    *. *-s* Agrupa todas a linhas brancas subsequentes em uma única linha. Caso o arquivo tenha três linhas brancas em           sequência, será exibida somente uma. `cat -s Arquivo.txt`.
+    *. *-A* Exibe todos os caracteres, mesmo os caracteres expeciais.
   O comando tem mais algumas opções, mas estas são as mais comuns a serem usadas, recomendo que acesse o manual a partir do comando *man* ou com a ajuda da opçao *--help*. Mas a título de curiosidade temos o comando **_TAC_**, que é *cat* ao contrário e assim como o nome, a exibição do texto também é ao contrário, mais expecificamente invertendo a ordem das linhas, comenando pela ũltima e terminando na primera.
   
 #### Comando *HEAD*
   Algumas vezes quando estivermos procurando por algum conteúdo em uma lista de arquivos,não será interessante ler todo o arquivo, principalmente se forem arquivos grandes, seria interessante ler uma parte do arquivo e assim identificar se é condizente com o conteúdo que procura. Pra resolver este problema temos o comando *head*, sua funcão é exibir por padrão as dez primeiras linhas. Temos algumas opções que alteram a quantidade de linhas a serem exibidas, mas a sintaxe padrão é: `head Arquivo.txt`. E dentro das opções nós temos:
-    1. *-n* Usamos quando queremos mudar a quantidade de linhas a serem exibidas, o *-n* vai ser acompanhado do números de linha que deseja que sejam exibidas, sem espaços: `head -n3 Arquivo.txt`, irá exibir as três primeiras linhas do arquivo.
-    2. *-c* É usado para delimitar não a quantidade de primeiras linhas a serem exibidas, mas a quantidade de primeiros *bytes* a serem exibidos, a forma de se usar é a mesma da opção *-n*: `head -c50 Arquivo.txt`. Vai exibir os 50 primeiros bytes, ou seja, os 50 primeriros caracteres do arquivo.
+    *. *-n* Usamos quando queremos mudar a quantidade de linhas a serem exibidas, o *-n* vai ser acompanhado do números de linha que deseja que sejam exibidas, sem espaços: `head -n3 Arquivo.txt`, irá exibir as três primeiras linhas do arquivo.
+    *. *-c* É usado para delimitar não a quantidade de primeiras linhas a serem exibidas, mas a quantidade de primeiros *bytes* a serem exibidos, a forma de se usar é a mesma da opção *-n*: `head -c50 Arquivo.txt`. Vai exibir os 50 primeiros bytes, ou seja, os 50 primeriros caracteres do arquivo.
     
 #### Comando *TAIL*
   O comando *tail* é bem similar ao comando *head*, porem ao invés de monstrar o começo do arquivo, este comando exibe o final do arquivo, e por padrão as últimas dez linhas desse arquivo. E sua sintaxe é bem simples, basta digitar `tail Arquivo.txt`. Vamos discutir as mesmas opções do comando *head*, mas vamos ver particularmente a opção *-f*:
-    1. *-n* Usamos quando queremos mudar a quantidade de linhas a serem exibidas, o *-n* vai ser acompanhado do números de linha que deseja que sejam mostradas, sem espaços: `tail -n3 Arquivo.txt`, irá exibir as três últimas linhas do arquivo.
-    2. *-c* É usado para delimitar não a quantidade de últimas linhas a serem exibidas, mas a quantidade de últimos *bytes* a serem exibidos, a forma de se usar é a mesma da opção *-n*: `tail -c50 Arquivo.txt`. Vai exibir os 50 últimos bytes, ou seja, os 50 últimos caracteres do arquivo.
-    3. *-f* Diferente da forma padrão, de escrever o resultado na tela e apressar pelo próximo comando, com a opção *-f* o *shell* vai ficar aguardando atualizações no arquivo, que caso aconteçam, serão impressas no terminal. É uma otima maneira de acompanhar atualizações dos arquivos de *log*, e sua sintaxe é bem simples, basta digitar `tail -f Arquivo.txt` e pode ser combinado com algumas das opções acima, como o *-n*, segue exemplo: `tail -f -n5 Arquivo.txt` ou de forma resumida `tail -fn5 Arquivo.txt`. Para cancelar e voltar a digitar comandos, basta precionar as teclas *control(ctrl)* e c.
+    *. *-n* Usamos quando queremos mudar a quantidade de linhas a serem exibidas, o *-n* vai ser acompanhado do números de linha que deseja que sejam mostradas, sem espaços: `tail -n3 Arquivo.txt`, irá exibir as três últimas linhas do arquivo.
+    *. *-c* É usado para delimitar não a quantidade de últimas linhas a serem exibidas, mas a quantidade de últimos *bytes* a serem exibidos, a forma de se usar é a mesma da opção *-n*: `tail -c50 Arquivo.txt`. Vai exibir os 50 últimos bytes, ou seja, os 50 últimos caracteres do arquivo.
+    *. *-f* Diferente da forma padrão, de escrever o resultado na tela e apressar pelo próximo comando, com a opção *-f* o *shell* vai ficar aguardando atualizações no arquivo, que caso aconteçam, serão impressas no terminal. É uma otima maneira de acompanhar atualizações dos arquivos de *log*, e sua sintaxe é bem simples, basta digitar `tail -f Arquivo.txt` e pode ser combinado com algumas das opções acima, como o *-n*, segue exemplo: `tail -f -n5 Arquivo.txt` ou de forma resumida `tail -fn5 Arquivo.txt`. Para cancelar e voltar a digitar comandos, basta precionar as teclas *control(ctrl)* e c.
+
+#### Comando *LESS*
+  É uma forma de ler arquivos, assim como o *cat*, porém aqui o conteúdo não é escrito no terminal, e sim em uma espécie de terminal temporário para realizar a leitura. Dito isto, vamos a sintaxe a as opções. Para utiliar o comando basta digitar `less Arquivo.txt`.
+    *. Para sair do *less* basta pressionar a tecla 'q'.
+    *. As teclas de *down* (seta para baixo) e *enter* descem o texto linha a linha.
+    *. A tecla *up* (seta para cima) sobe o texto linha a linha.
+    *. As teclas *page up* e espaço avançam uma página inteira de uma vez.
+    *. A tecla *page up* e a combinação de teclas *ctrl+b* retrocedem uma página inteira de uma vez.
+    *. A tecla */* (barra) ativa a busca, basta então digitar o que deseja encontrar. O sistema te levará para a primeira ocorrência encontrada para sua busca, para avançar para a pŕoxima, aperte *n* e caso queira a ocorrência anterior, precione a combinação *shift+n*.
+    *. E a última é a tecla *g*. Exibe os *status* do arquivo, como a percentagem exibida do arquivo, qual linha você está lendo no momento (numeração), quantos *bytes* tem e quantos restam.
+  O comando *less* é uma ótima opção para ler informações sem poluir o terminal, mais para frente vamos aprender sobre como trocar as saídas padrão do linux, mas podemos utilizar este comando para ler os resultados de um *man* por exemplo, bata seguir a seguinte sintaxe: `man echo | less`. Ao colocar o | (pipe) seguido de less ao final do comando, todo texto que seria exibido no terminal será redirecionado para o comando, mais a frente entenderemos o porquê.
