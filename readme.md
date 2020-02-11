@@ -236,5 +236,5 @@ source .bashrc
     *. As teclas *page up* e espaço avançam uma página inteira de uma vez.
     *. A tecla *page up* e a combinação de teclas *ctrl+b* retrocedem uma página inteira de uma vez.
     *. A tecla */* (barra) ativa a busca, basta então digitar o que deseja encontrar. O sistema te levará para a primeira ocorrência encontrada para sua busca, para avançar para a pŕoxima, aperte *n* e caso queira a ocorrência anterior, precione a combinação *shift+n*.
-    *. E a última é a tecla *g*. Exibe os *status* do arquivo, como a percentagem exibida do arquivo, qual linha você está lendo no momento (numeração), quantos *bytes* tem e quantos restam.
+    *. E a última é combinação *ctrl+g*. Exibe os *status* do arquivo, como a percentagem exibida do arquivo, qual linha você está lendo no momento (numeração), quantos *bytes* tem e quantos restam.
   O comando *less* é uma ótima opção para ler informações sem poluir o terminal, mais para frente vamos aprender sobre como trocar as saídas padrão do linux, mas podemos utilizar este comando para ler os resultados de um *man* por exemplo, bata seguir a seguinte sintaxe: `man echo | less`. Ao colocar o | (pipe) seguido de less ao final do comando, todo texto que seria exibido no terminal será redirecionado para o comando, mais a frente entenderemos o porquê.
